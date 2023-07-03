@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createBlog, updateBlog } from "../redux/features/blogSlice";
+import { Spinner } from "../components";
 
 const initialState = {
   title: "",
@@ -16,7 +17,7 @@ const initialState = {
 const AddEditBlog = () => {
   const [blogData, setBlogData] = useState(initialState);
   const [tagErrMsg, setTagErrMsg] = useState(null);
-  const { error, userBlogs } = useSelector((state) => ({
+  const { error, userBlogs, loading } = useSelector((state) => ({
     ...state.blog,
   }));
   const { user } = useSelector((state) => ({ ...state.auth }));
@@ -72,6 +73,10 @@ const AddEditBlog = () => {
   const handleClear = () => {
     setBlogData({ title: "", description: "", tags: [] });
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
   return (
     <div
       style={{

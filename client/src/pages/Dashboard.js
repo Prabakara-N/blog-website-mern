@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MDBCard,
   MDBCardTitle,
@@ -16,12 +16,17 @@ import { Link } from "react-router-dom";
 import { deleteBlog, getBlogsByUser } from "../redux/features/blogSlice";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
+import { ModelDelete } from "../components";
 
 const Dashboard = () => {
   const { user } = useSelector((state) => ({ ...state.auth }));
   const { userBlogs, loading } = useSelector((state) => ({ ...state.blog }));
   const userId = user?.result?._id;
   const dispatch = useDispatch();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleShow = () => setIsModalOpen(!isModalOpen);
 
   useEffect(() => {
     if (userId) {
@@ -41,10 +46,15 @@ const Dashboard = () => {
     return <Spinner />;
   }
 
+  // const handleDelete = (id) => {
+  //   if (window.confirm("Are you sure you want to delete this blog ?")) {
+  //     dispatch(deleteBlog({ id, toast }));
+  //   }
+  // };
+
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this blog ?")) {
-      dispatch(deleteBlog({ id, toast }));
-    }
+    dispatch(deleteBlog({ id, toast }));
+    setIsModalOpen(false);
   };
 
   return (
@@ -97,13 +107,20 @@ const Dashboard = () => {
                         marginTop: "-60px",
                       }}
                     >
+                      <ModelDelete
+                        isModalOpen={isModalOpen}
+                        setIsModalOpen={setIsModalOpen}
+                        toggleShow={toggleShow}
+                        handleDelete={handleDelete}
+                        id={item._id}
+                      />
                       <MDBBtn className="mt-1" tag="a" color="none">
                         <MDBIcon
                           fas
                           icon="trash"
                           style={{ color: "#dd4b39" }}
                           size="lg"
-                          onClick={() => handleDelete(item._id)}
+                          onClick={toggleShow}
                         />
                       </MDBBtn>
                       <Link to={`/editBlog/${item._id}`}>

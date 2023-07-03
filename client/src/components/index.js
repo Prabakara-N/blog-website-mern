@@ -6,3 +6,4 @@ export { default as DisqusThread } from "./DisqusThread";
 export { default as LoadingToRedirect } from "./LoadingToRedirect";
 export { default as Pagination } from "./Pagination";
 export { default as RelatedBlogs } from "./RelatedBlogs";
+export { default as ModelDelete } from "./ModelDelete";

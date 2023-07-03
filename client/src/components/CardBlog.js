@@ -85,7 +85,7 @@ const CardBlog = ({
             <Link to={`/blogs/tag/${tag}`}> #{tag}</Link>
           ))}
           <MDBBtn
-            style={{ float: "right" }}
+            style={{ float: "right", marginRight: "15px" }}
             tag="a"
             color="none"
             onClick={!user?.result ? null : handleLike}
