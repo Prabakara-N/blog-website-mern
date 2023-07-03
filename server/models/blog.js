@@ -17,6 +17,6 @@ const blogSchema = mongoose.Schema({
   },
 });
 
-const BlogModal = mongoose.model("Tour", blogSchema);
+const BlogModal = mongoose.model("Blog", blogSchema);
 
 export default BlogModal;

@@ -13,7 +13,7 @@ const LoadingToRedirect = () => {
     return () => clearInterval(interval);
   }, [count, navigate]);
   return (
-    <div style={{ marginTop: "100px" }}>
+    <div className="loader" style={{ marginTop: "100px" }}>
       <h5>Redirecting you in {count} seconds</h5>
     </div>
   );

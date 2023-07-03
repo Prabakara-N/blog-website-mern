@@ -54,11 +54,16 @@ body {
 }
 
 .loader {
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 40vh;
+}
+
+.eye {
+  right: 20px;
+  top: 5px;
+  cursor: pointer;
 }
 
 .header-text {
@@ -120,4 +125,21 @@ h4:before {
 h4:after {
   left: 0.5em;
   margin-right: -50%;
+}
+
+.error {
+  margin-top: 6rem;
+}
+
+@media screen and (min-width: 900px) {
+  .error {
+    margin-top: 3rem;
+    width: 50%;
+    max-height: 88vh;
+  }
+
+  .error-msg {
+    font-weight: 600;
+    font-size: 2.5rem;
+  }
 }

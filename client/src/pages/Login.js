@@ -9,6 +9,7 @@ import {
   MDBIcon,
   MDBSpinner,
 } from "mdb-react-ui-kit";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -21,6 +22,7 @@ const initialState = {
 
 const Login = () => {
   const [formValue, setFormValue] = useState(initialState);
+  const [isEyeOpen, setIsEyeOpen] = useState(false);
   const { loading, error } = useSelector((state) => ({ ...state.auth }));
   const { email, password } = formValue;
   const dispatch = useDispatch();
@@ -68,10 +70,10 @@ const Login = () => {
                 validation="Please provide your email"
               />
             </div>
-            <div className="col-md-12">
+            <div className="col-md-12 position-relative">
               <MDBInput
                 label="Password"
-                type="password"
+                type={isEyeOpen ? "text" : "password"}
                 value={password}
                 name="password"
                 onChange={onInputChange}
@@ -79,6 +81,12 @@ const Login = () => {
                 invalid
                 validation="Please provide your password"
               />
+              <div
+                className="cursor-pointer position-absolute eye"
+                onClick={() => setIsEyeOpen(!isEyeOpen)}
+              >
+                {isEyeOpen ? <FaEye /> : <FaEyeSlash />}
+              </div>
             </div>
             <div className="col-12">
               <MDBBtn style={{ width: "100%" }} className="mt-2">

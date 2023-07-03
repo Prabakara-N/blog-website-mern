@@ -9,6 +9,7 @@ import {
   MDBIcon,
   MDBSpinner,
 } from "mdb-react-ui-kit";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -25,6 +26,8 @@ const initialState = {
 const Register = () => {
   const [formValue, setFormValue] = useState(initialState);
   const { loading, error } = useSelector((state) => ({ ...state.auth }));
+  const [isCEyeOpen, setIsCEyeOpen] = useState(false);
+  const [isEyeOpen, setIsEyeOpen] = useState(false);
   const { email, password, firstName, lastName, confirmPassword } = formValue;
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -97,10 +100,10 @@ const Register = () => {
                 validation="Please provide email"
               />
             </div>
-            <div className="col-md-12">
+            <div className="col-md-12 position-relative">
               <MDBInput
                 label="Password"
-                type="password"
+                type={isEyeOpen ? "text" : "password"}
                 value={password}
                 name="password"
                 onChange={onInputChange}
@@ -108,11 +111,17 @@ const Register = () => {
                 invalid
                 validation="Please provide password"
               />
+              <div
+                className="cursor-pointer position-absolute eye"
+                onClick={() => setIsEyeOpen(!isEyeOpen)}
+              >
+                {isEyeOpen ? <FaEye /> : <FaEyeSlash />}
+              </div>
             </div>
-            <div className="col-md-12">
+            <div className="col-md-12 position-relative">
               <MDBInput
                 label="Password Confirm"
-                type="password"
+                type={isCEyeOpen ? "text" : "password"}
                 value={confirmPassword}
                 name="confirmPassword"
                 onChange={onInputChange}
@@ -120,6 +129,12 @@ const Register = () => {
                 invalid
                 validation="Please provide confirm password"
               />
+              <div
+                className="cursor-pointer position-absolute eye"
+                onClick={() => setIsCEyeOpen(!isCEyeOpen)}
+              >
+                {isCEyeOpen ? <FaEye /> : <FaEyeSlash />}
+              </div>
             </div>
             <div className="col-12">
               <MDBBtn style={{ width: "100%" }} className="mt-2">

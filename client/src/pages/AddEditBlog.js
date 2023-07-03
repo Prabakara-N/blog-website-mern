@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBValidation,
-  MDBBtn,
-  MDBInput,
-} from "mdb-react-ui-kit";
+import { MDBCard, MDBCardBody, MDBValidation, MDBBtn } from "mdb-react-ui-kit";
 import ChipInput from "material-ui-chip-input";
 import FileBase from "react-file-base64";
 import { toast } from "react-toastify";

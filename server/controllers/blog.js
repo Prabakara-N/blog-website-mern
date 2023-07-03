@@ -2,9 +2,9 @@ import BlogModal from "../models/blog.js";
 import mongoose from "mongoose";
 
 export const createBlog = async (req, res) => {
-  const tour = req.body;
+  const blog = req.body;
   const newBlog = new BlogModal({
-    ...tour,
+    ...blog,
     creator: req.userId,
     createdAt: new Date().toISOString(),
   });
@@ -26,11 +26,11 @@ export const getBlogs = async (req, res) => {
     const limit = 6;
     const startIndex = (Number(page) - 1) * limit;
     const total = await BlogModal.countDocuments({});
-    const tours = await BlogModal.find().limit(limit).skip(startIndex);
+    const blogs = await BlogModal.find().limit(limit).skip(startIndex);
     res.json({
-      data: tours,
+      data: blogs,
       currentPage: Number(page),
-      totalTours: total,
+      totalBlogs: total,
       numberOfPages: Math.ceil(total / limit),
     });
   } catch (error) {
@@ -53,8 +53,8 @@ export const getBlogsByUser = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ message: "User doesn't exist" });
   }
-  const userTours = await BlogModal.find({ creator: id });
-  res.status(200).json(userTours);
+  const userBlogs = await BlogModal.find({ creator: id });
+  res.status(200).json(userBlogs);
 };
 
 export const deleteBlog = async (req, res) => {
@@ -64,7 +64,7 @@ export const deleteBlog = async (req, res) => {
       return res.status(404).json({ message: `No Blog exist with id: ${id}` });
     }
     await BlogModal.findByIdAndRemove(id);
-    res.json({ message: "Tour deleted successfully" });
+    res.json({ message: "Blog deleted successfully" });
   } catch (error) {
     res.status(404).json({ message: "Something went wrong" });
   }

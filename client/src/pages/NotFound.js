@@ -2,8 +2,13 @@ import React from "react";
 
 const NotFound = () => {
   return (
-    <div>
-      <img src="/images/404.jpg" alt="Not Found" />
+    <div className="text-center">
+      <img
+        src="https://res.cloudinary.com/daxmjqsy2/image/upload/v1680158221/oops-404-error-with-broken-robot-concept-illustration_114360-5529_xnao6v.avif"
+        alt="Page not found"
+        className="img-fluid error"
+      />
+      <p className="error-msg">Page Not Found</p>
     </div>
   );
 };

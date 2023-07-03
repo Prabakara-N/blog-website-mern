@@ -57,7 +57,7 @@ const Dashboard = () => {
       }}
     >
       {userBlogs.length === 0 && (
-        <h3>No tour available with the user: {user?.result?.name}</h3>
+        <h3>No blogs available with the user: {user?.result?.name}</h3>
       )}
 
       {userBlogs.length > 0 && (

@@ -31,9 +31,9 @@ const Home = () => {
   return (
     <div
       style={{
-        margin: "auto",
+        margin: "2rem auto",
         padding: "15px",
-        maxWidth: "1000px",
+        maxWidth: "1200px",
         alignContent: "center",
       }}
     >
