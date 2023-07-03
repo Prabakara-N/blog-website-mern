@@ -1,4 +1,5 @@
 import React from "react";
+import noBlog from "../assets/images/blog.jpg";
 import {
   MDBCard,
   MDBCardBody,
@@ -74,7 +75,7 @@ const CardBlog = ({
     <MDBCardGroup>
       <MDBCard className="h-100 mt-2 d-sm-flex" style={{ maxWidth: "20rem" }}>
         <MDBCardImage
-          src={imageFile}
+          src={imageFile || noBlog}
           alt={title}
           position="top"
           style={{ maxWidth: "100%", height: "180px" }}

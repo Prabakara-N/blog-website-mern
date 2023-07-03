@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import noBlog from "../assets/images/blog.jpg";
 import {
   MDBCard,
   MDBCardBody,
@@ -39,7 +40,7 @@ const SingleBlog = () => {
           <MDBCardImage
             position="top"
             style={{ width: "100%", maxHeight: "600px" }}
-            src={blog.imageFile}
+            src={blog.imageFile || noBlog}
             alt={blog.title}
           />
           <MDBCardBody>

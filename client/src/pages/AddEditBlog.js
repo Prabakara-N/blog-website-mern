@@ -54,22 +54,28 @@ const AddEditBlog = () => {
         dispatch(updateBlog({ id, updatedBlogData, toast, navigate }));
       }
       handleClear();
+    } else {
+      toast.error("All the fields are mandatory");
     }
   };
+
   const onInputChange = (e) => {
     const { name, value } = e.target;
     setBlogData({ ...blogData, [name]: value });
   };
+
   const handleAddTag = (tag) => {
     setTagErrMsg(null);
     setBlogData({ ...blogData, tags: [...blogData.tags, tag] });
   };
+
   const handleDeleteTag = (deleteTag) => {
     setBlogData({
       ...blogData,
       tags: blogData.tags.filter((tag) => tag !== deleteTag),
     });
   };
+
   const handleClear = () => {
     setBlogData({ title: "", description: "", tags: [] });
   };
@@ -77,6 +83,7 @@ const AddEditBlog = () => {
   if (loading) {
     return <Spinner />;
   }
+
   return (
     <div
       style={{

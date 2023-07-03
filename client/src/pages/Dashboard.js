@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import noBlog from "../assets/images/blog.jpg";
 import {
   MDBCard,
   MDBCardTitle,
@@ -46,12 +47,6 @@ const Dashboard = () => {
     return <Spinner />;
   }
 
-  // const handleDelete = (id) => {
-  //   if (window.confirm("Are you sure you want to delete this blog ?")) {
-  //     dispatch(deleteBlog({ id, toast }));
-  //   }
-  // };
-
   const handleDelete = (id) => {
     dispatch(deleteBlog({ id, toast }));
     setIsModalOpen(false);
@@ -85,7 +80,7 @@ const Dashboard = () => {
                 <MDBCol md="4">
                   <MDBCardImage
                     className="rounded"
-                    src={item.imageFile}
+                    src={item.imageFile || noBlog}
                     alt={item.title}
                     fluid
                   />
