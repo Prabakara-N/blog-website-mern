@@ -1,0 +1,123 @@
+* {
+  padding: 0;
+  margin-top: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+:root {
+  --clr-dark-violet: #011936;
+  --clr-Very-Dark: #161722;
+  --clr-Very-Dark-Desaturated-Blue: #25273c;
+  --clr-Very-Grayish-Blue: #4d5066;
+  --clr-Very-Dark-Grayish-Blue: #393a4c;
+  --clr-verdigris: #48a9a6;
+  --dark-pastel-green: #20bf55;
+  --clr-blue: #0b4f6c;
+  --clr-royal-blue-dark: #03256c;
+  --clr-denim-blue: #2541b2;
+  --clr-blue: #1768ac;
+  --clr-Dark-Blue: #2b3945;
+  --clr-Very-Dark-Blue: #202c37;
+  --clr-Very-Dark-Blue-Light: #111517;
+  --clr-Dark-Grayish-Blue: #323a49;
+  --box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25),
+    -2px -2px 2px rgba(0, 0, 0, 0.25);
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--clr-white);
+}
+
+.search {
+  right: 10px;
+}
+
+.search-input {
+  margin-top: 1.2rem;
+  margin-right: 1rem;
+  margin-left: -10px;
+}
+
+.loader {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+}
+
+.header-text {
+  color: white;
+  font-weight: 500;
+  margin-top: 17px;
+  font-size: 17px;
+}
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.tag-card {
+  margin: 10px 0 0 20px;
+  color: #806a78;
+}
+
+.tourName {
+  color: "#F48FB1";
+  font-size: 18px;
+  margin: 0 0 0 4px;
+  font-weight: 500;
+}
+
+.tagErrMsg {
+  color: #f93154;
+  margin-top: 5px;
+  text-align: left;
+  font-size: 14px;
+}
+
+h4 {
+  overflow: hidden;
+  text-align: center;
+}
+
+h4:before,
+h4:after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+h4:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+h4:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
