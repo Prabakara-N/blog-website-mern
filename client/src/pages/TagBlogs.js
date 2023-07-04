@@ -10,6 +10,7 @@ import {
   MDBBtn,
   MDBCardGroup,
 } from "mdb-react-ui-kit";
+import noBlog from "../assets/images/blog.jpg";
 import { useParams, useNavigate } from "react-router-dom";
 import { Spinner } from "../components";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +18,7 @@ import { getBlogsByTag } from "../redux/features/blogSlice";
 import { excerpt } from "../utility";
 
 const TagBlogs = () => {
-  const { tagTours, loading } = useSelector((state) => ({ ...state.tour }));
+  const { tagBlogs, loading } = useSelector((state) => ({ ...state.blog }));
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { tag } = useParams();
@@ -42,17 +43,17 @@ const TagBlogs = () => {
         alignContent: "center",
       }}
     >
-      <h3 className="text-center">Tours with tag: {tag}</h3>
+      <h3 className="text-center">Blogs with tag: {tag}</h3>
       <hr style={{ maxWidth: "570px" }} />
-      {tagTours &&
-        tagTours.map((item) => (
+      {tagBlogs &&
+        tagBlogs.map((item) => (
           <MDBCardGroup key={item._id}>
             <MDBCard style={{ maxWidth: "600px" }} className="mt-2">
               <MDBRow className="g-0">
                 <MDBCol md="4">
                   <MDBCardImage
                     className="rounded"
-                    src={item.imageFile}
+                    src={item.imageFile || noBlog}
                     alt={item.title}
                     fluid
                   />

@@ -67,7 +67,7 @@ const SingleBlog = () => {
               {blog.description}
             </MDBCardText>
           </MDBCardBody>
-          <RelatedBlogs relatedTours={relatedBlogs} blogId={id} />
+          <RelatedBlogs relatedBlogs={relatedBlogs} blogId={id} />
         </MDBCard>
         <DisqusThread id={id} title={blog.title} path={`/blog/${id}`} />
       </MDBContainer>

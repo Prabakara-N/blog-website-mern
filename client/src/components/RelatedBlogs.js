@@ -8,32 +8,33 @@ import {
   MDBCardText,
   MDBCardImage,
 } from "mdb-react-ui-kit";
+import noBlog from "../assets/images/blog.jpg";
 import { Link } from "react-router-dom";
 import { excerpt } from "../utility";
 
-const RelatedBlogs = ({ relatedTours, tourId }) => {
+const RelatedBlogs = ({ relatedBlogs, blogId }) => {
   return (
     <>
-      {relatedTours && relatedTours.length > 0 && (
+      {relatedBlogs && relatedBlogs.length > 0 && (
         <>
-          {relatedTours.length > 1 && <h4>Related Tours</h4>}
+          {relatedBlogs.length > 1 && <h4>Related Blogs</h4>}
           <MDBRow className="row-cols-1 row-cols-md-3 g-4">
-            {relatedTours
-              .filter((item) => item._id !== tourId)
+            {relatedBlogs
+              .filter((item) => item._id !== blogId)
               .splice(0, 3)
               .map((item) => (
                 <MDBCol>
                   <MDBCard>
                     <Link to={`/blog/${item._id}`}>
                       <MDBCardImage
-                        src={item.imageFile}
+                        src={item.imageFile || noBlog}
                         alt={item.title}
                         position="top"
                       />
                     </Link>
                     <span className="text-start tag-card">
                       {item.tags.map((tag) => (
-                        <Link to={`/blogs/tag${tag}`}> #{tag}</Link>
+                        <Link to={`/blogs/tag/${tag}`}> #{tag}</Link>
                       ))}
                     </span>
                     <MDBCardBody>
