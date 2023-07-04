@@ -89,8 +89,7 @@ body {
 
 .tourName {
   color: "#F48FB1";
-  font-size: 18px;
-  margin: 0 0 0 4px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -165,5 +164,9 @@ h4:after {
 
   .title-blog {
     font-size: 2.15rem;
+  }
+
+  .tourName {
+    font-size: 18px;
   }
 }
