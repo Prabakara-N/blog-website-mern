@@ -36,11 +36,10 @@ const TagBlogs = () => {
 
   return (
     <div
+      className="blog-card"
       style={{
-        margin: "auto",
-        padding: "120px",
+        padding: "20px",
         maxWidth: "900px",
-        alignContent: "center",
       }}
     >
       <h3 className="text-center">Blogs with tag: {tag}</h3>

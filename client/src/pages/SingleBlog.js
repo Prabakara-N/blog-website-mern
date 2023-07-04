@@ -28,13 +28,12 @@ const SingleBlog = () => {
   useEffect(() => {
     if (id) {
       dispatch(getBlog(id));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   return (
     <>
       <MDBContainer>
-        <MDBCard className="mb-3 mt-2">
+        <MDBCard className="mb-3 mt-5">
           <MDBCardImage
             position="top"
             style={{ width: "100%", maxHeight: "600px" }}

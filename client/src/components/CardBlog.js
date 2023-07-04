@@ -73,7 +73,7 @@ const CardBlog = ({
 
   return (
     <MDBCardGroup className="mb-4">
-      <MDBCard className="h-100 mt-2 d-sm-flex" style={{ maxWidth: "20rem" }}>
+      <MDBCard className="h-100 d-sm-flex" style={{ maxWidth: "20rem" }}>
         <MDBCardImage
           src={imageFile || noBlog}
           alt={title}

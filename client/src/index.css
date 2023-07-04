@@ -138,6 +138,26 @@ h4:after {
   color: var(--clr-Very-Dark-Desaturated-Blue);
 }
 
+.dashboard-card {
+  padding: 0 24px;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-card {
+  margin: 0 auto;
+  margin-top: 70px;
+  padding: 0 24px;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (min-width: 900px) {
   .error {
     margin-top: 3rem;
@@ -168,5 +188,10 @@ h4:after {
 
   .tourName {
     font-size: 18px;
+  }
+
+  .dashboard-card,
+  .blog-card {
+    padding: 120px;
   }
 }

@@ -47,96 +47,94 @@ const Header = () => {
   };
 
   return (
-    <div className="mb-6">
-      <MDBNavbar fixed="top" expand="lg" style={{ backgroundColor: "#202c37" }}>
-        <MDBContainer>
-          <MDBNavbarBrand
-            href="/"
-            style={{ color: "white", fontWeight: "600", fontSize: "22px" }}
-          >
-            Blogs
-          </MDBNavbarBrand>
-          <MDBNavbarToggler
-            type="button"
-            aria-expanded="false"
-            aria-label="Toogle navigation"
-            onClick={() => setShow(!show)}
-            style={{ color: "#f0f8ff" }}
-          >
-            <MDBIcon icon="bars" fas />
-          </MDBNavbarToggler>
-          <MDBCollapse show={show} navbar>
-            <MDBNavbarNav right fullWidth={false} className="mb-2 mb-lg-0">
-              {user?.result?._id && (
-                <h5
-                  style={{
-                    marginRight: "30px",
-                    marginTop: "27px",
-                    color: "#48a9a6",
-                  }}
-                >
-                  {user?.result?.name}
-                </h5>
-              )}
-
-              <form
-                className="d-flex input-group w-auto position-relative search-input"
-                onSubmit={handleSubmit}
+    <MDBNavbar fixed="top" expand="lg" style={{ backgroundColor: "#202c37" }}>
+      <MDBContainer>
+        <MDBNavbarBrand
+          href="/"
+          style={{ color: "white", fontWeight: "600", fontSize: "22px" }}
+        >
+          Blogs
+        </MDBNavbarBrand>
+        <MDBNavbarToggler
+          type="button"
+          aria-expanded="false"
+          aria-label="Toogle navigation"
+          onClick={() => setShow(!show)}
+          style={{ color: "#f0f8ff" }}
+        >
+          <MDBIcon icon="bars" fas />
+        </MDBNavbarToggler>
+        <MDBCollapse show={show} navbar>
+          <MDBNavbarNav right fullWidth={false} className="mb-2 mb-lg-0">
+            {user?.result?._id && (
+              <h5
+                style={{
+                  marginRight: "30px",
+                  marginTop: "27px",
+                  color: "#48a9a6",
+                }}
               >
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Search Blog"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <div
-                  className="position-absolute search"
-                  style={{ marginTop: "5px", marginLeft: "5px" }}
-                >
-                  <MDBIcon fas icon="search" />
-                </div>
-              </form>
+                {user?.result?.name}
+              </h5>
+            )}
 
+            <form
+              className="d-flex input-group w-auto position-relative search-input"
+              onSubmit={handleSubmit}
+            >
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search Blog"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <div
+                className="position-absolute search"
+                style={{ marginTop: "5px", marginLeft: "5px" }}
+              >
+                <MDBIcon fas icon="search" />
+              </div>
+            </form>
+
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/">
+                <p className="header-text">Home</p>
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+            {user?.result?._id && (
+              <>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="/addBlog">
+                    <p className="header-text">Add Blog</p>
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="/dashboard">
+                    <p className="header-text">Dashboard</p>
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+              </>
+            )}
+            {user?.result?._id ? (
               <MDBNavbarItem>
-                <MDBNavbarLink href="/">
-                  <p className="header-text">Home</p>
+                <MDBNavbarLink href="/login">
+                  <p className="header-text" onClick={() => handleLogout()}>
+                    Logout
+                  </p>
                 </MDBNavbarLink>
               </MDBNavbarItem>
-              {user?.result?._id && (
-                <>
-                  <MDBNavbarItem>
-                    <MDBNavbarLink href="/addBlog">
-                      <p className="header-text">Add Blog</p>
-                    </MDBNavbarLink>
-                  </MDBNavbarItem>
-                  <MDBNavbarItem>
-                    <MDBNavbarLink href="/dashboard">
-                      <p className="header-text">Dashboard</p>
-                    </MDBNavbarLink>
-                  </MDBNavbarItem>
-                </>
-              )}
-              {user?.result?._id ? (
-                <MDBNavbarItem>
-                  <MDBNavbarLink href="/login">
-                    <p className="header-text" onClick={() => handleLogout()}>
-                      Logout
-                    </p>
-                  </MDBNavbarLink>
-                </MDBNavbarItem>
-              ) : (
-                <MDBNavbarItem>
-                  <MDBNavbarLink href="/login">
-                    <p className="header-text">Login</p>
-                  </MDBNavbarLink>
-                </MDBNavbarItem>
-              )}
-            </MDBNavbarNav>
-          </MDBCollapse>
-        </MDBContainer>
-      </MDBNavbar>
-    </div>
+            ) : (
+              <MDBNavbarItem>
+                <MDBNavbarLink href="/login">
+                  <p className="header-text">Login</p>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+            )}
+          </MDBNavbarNav>
+        </MDBCollapse>
+      </MDBContainer>
+    </MDBNavbar>
   );
 };
 

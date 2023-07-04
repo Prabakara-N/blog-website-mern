@@ -54,11 +54,10 @@ const Dashboard = () => {
 
   return (
     <div
+      className="dashboard-card"
       style={{
-        margin: "auto",
-        padding: "120px",
+        margin: "0 auto",
         maxWidth: "900px",
-        alignContent: "center",
       }}
     >
       {userBlogs.length === 0 && (
@@ -75,7 +74,10 @@ const Dashboard = () => {
       {userBlogs &&
         userBlogs.map((item) => (
           <MDBCardGroup key={item._id}>
-            <MDBCard style={{ maxWidth: "600px" }} className="mt-2">
+            <MDBCard
+              style={{ maxWidth: "600px", minWidth: "350px" }}
+              className="mt-2"
+            >
               <MDBRow className="g-0">
                 <MDBCol md="4">
                   <MDBCardImage
