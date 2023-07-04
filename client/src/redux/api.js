@@ -8,7 +8,7 @@ import axios from "axios";
 // //   baseURL: `${devEnv ? REACT_APP_DEV_API : REACT_APP_PROD_API}`,
 // // });
 
-const API = axios.create({ baseURL: "http://localhost:5000" });
+const API = axios.create({ baseURL: "https://blog-mern-eyva.onrender.com" });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
