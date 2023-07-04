@@ -7,10 +7,9 @@ import {
   MDBCardImage,
   MDBContainer,
   MDBIcon,
-  MDBBtn,
 } from "mdb-react-ui-kit";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import moment from "moment";
 import { getRelatedBlogs, getBlog } from "../redux/features/blogSlice";
 import { DisqusThread, RelatedBlogs } from "../components";
@@ -19,7 +18,6 @@ const SingleBlog = () => {
   const dispatch = useDispatch();
   const { blog, relatedBlogs } = useSelector((state) => ({ ...state.blog }));
   const { id } = useParams();
-  const navigate = useNavigate();
   const tags = blog?.tags;
 
   useEffect(() => {
@@ -44,20 +42,7 @@ const SingleBlog = () => {
             alt={blog.title}
           />
           <MDBCardBody>
-            <MDBBtn
-              tag="a"
-              color="none"
-              style={{ float: "left", color: "#000" }}
-              onClick={() => navigate("/")}
-            >
-              <MDBIcon
-                fas
-                size="lg"
-                icon="long-arrow-alt-left"
-                style={{ float: "left" }}
-              />
-            </MDBBtn>
-            <h3>{blog.title}</h3>
+            <h3 className="text-center title-blog">{blog.title}</h3>
             <span>
               <p className="text-start tourName">Created By: {blog.name}</p>
             </span>

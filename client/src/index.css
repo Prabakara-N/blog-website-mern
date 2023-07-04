@@ -135,6 +135,10 @@ h4:after {
   font-size: 0.95rem;
 }
 
+.title-blog {
+  color: var(--clr-Very-Dark-Desaturated-Blue);
+}
+
 @media screen and (min-width: 900px) {
   .error {
     margin-top: 3rem;
@@ -157,5 +161,9 @@ h4:after {
 @media screen and (min-width: 768px) {
   .delete-msg {
     font-size: 1.25rem;
+  }
+
+  .title-blog {
+    font-size: 2.15rem;
   }
 }
