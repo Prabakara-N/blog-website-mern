@@ -60,7 +60,7 @@ const Header = () => {
           aria-expanded="false"
           aria-label="Toogle navigation"
           onClick={() => setShow(!show)}
-          style={{ color: "#606080" }}
+          style={{ color: "#f0f8ff" }}
         >
           <MDBIcon icon="bars" fas />
         </MDBNavbarToggler>
