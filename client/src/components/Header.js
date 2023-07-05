@@ -44,6 +44,7 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(setLogout());
+    navigate("/login");
   };
 
   return (
@@ -134,13 +135,7 @@ const Header = () => {
             {user?.result?._id ? (
               <MDBNavbarItem>
                 <MDBNavbarLink>
-                  <p
-                    className="header-text navbar-item"
-                    onClick={() => {
-                      handleLogout();
-                      navigate("/login");
-                    }}
-                  >
+                  <p className="header-text navbar-item" onClick={handleLogout}>
                     Logout
                   </p>
                 </MDBNavbarLink>
