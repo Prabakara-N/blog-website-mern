@@ -28,6 +28,8 @@ const CardBlog = ({
   const userId = user?.result?._id || user?.result?.googleId;
 
   const dispatch = useDispatch();
+
+  //to short the description length
   const excerpt = (str) => {
     if (str.length > 45) {
       str = str.substring(0, 45) + " ...";

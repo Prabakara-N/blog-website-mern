@@ -145,6 +145,7 @@ const blogSlice = createSlice({
     },
   },
   extraReducers: {
+    // create
     [createBlog.pending]: (state) => {
       state.loading = true;
     },
@@ -156,6 +157,8 @@ const blogSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
+    // getting blogs
     [getBlogs.pending]: (state) => {
       state.loading = true;
     },
@@ -169,6 +172,8 @@ const blogSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
+    // get single blog
     [getBlog.pending]: (state) => {
       state.loading = true;
     },
@@ -180,6 +185,8 @@ const blogSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
+    // get blogs by user
     [getBlogsByUser.pending]: (state) => {
       state.loading = true;
     },
@@ -191,6 +198,8 @@ const blogSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
+    // delete blog
     [deleteBlog.pending]: (state) => {
       state.loading = true;
     },
@@ -208,6 +217,8 @@ const blogSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
+    // update blog
     [updateBlog.pending]: (state) => {
       state.loading = true;
     },
@@ -229,6 +240,8 @@ const blogSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
+    // likes
     // [likeBlog.pending]: (state, action) => {},
     [likeBlog.fulfilled]: (state, action) => {
       state.loading = false;
@@ -245,6 +258,8 @@ const blogSlice = createSlice({
       state.error = action.payload.message;
     },
 
+    // serach blogs
+
     [searchBlogs.pending]: (state) => {
       state.loading = true;
     },
@@ -256,6 +271,8 @@ const blogSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
+    // getBlogsByTag
     [getBlogsByTag.pending]: (state) => {
       state.loading = true;
     },
@@ -267,6 +284,8 @@ const blogSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
+    // getRelatedBlogs
     [getRelatedBlogs.pending]: (state) => {
       state.loading = true;
     },
