@@ -50,7 +50,7 @@ body {
 .search-input {
   margin-top: 1.2rem;
   margin-right: 1rem;
-  margin-left: -10px;
+  margin-left: 14px;
 }
 
 .loader {
@@ -158,6 +158,10 @@ h4:after {
   justify-content: center;
 }
 
+.navbar-item {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 900px) {
   .error {
     margin-top: 3rem;
@@ -193,5 +197,9 @@ h4:after {
   .dashboard-card,
   .blog-card {
     padding: 120px;
+  }
+
+  .search-input {
+    margin-left: -10px;
   }
 }

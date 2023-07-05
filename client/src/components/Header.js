@@ -98,36 +98,62 @@ const Header = () => {
             </form>
 
             <MDBNavbarItem>
-              <MDBNavbarLink href="/">
-                <p className="header-text">Home</p>
+              <MDBNavbarLink>
+                <p
+                  className="header-text navbar-item"
+                  onClick={() => navigate("/")}
+                >
+                  Home
+                </p>
               </MDBNavbarLink>
             </MDBNavbarItem>
             {user?.result?._id && (
               <>
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="/addBlog">
-                    <p className="header-text">Add Blog</p>
+                  <MDBNavbarLink>
+                    <p
+                      className="header-text navbar-item"
+                      onClick={() => navigate("/addBlog")}
+                    >
+                      Add Blog
+                    </p>
                   </MDBNavbarLink>
                 </MDBNavbarItem>
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="/dashboard">
-                    <p className="header-text">Dashboard</p>
+                  <MDBNavbarLink>
+                    <p
+                      className="header-text navbar-item"
+                      onClick={() => navigate("/dashboard")}
+                    >
+                      Dashboard
+                    </p>
                   </MDBNavbarLink>
                 </MDBNavbarItem>
               </>
             )}
             {user?.result?._id ? (
               <MDBNavbarItem>
-                <MDBNavbarLink href="/login">
-                  <p className="header-text" onClick={() => handleLogout()}>
+                <MDBNavbarLink>
+                  <p
+                    className="header-text navbar-item"
+                    onClick={() => {
+                      handleLogout();
+                      navigate("/login");
+                    }}
+                  >
                     Logout
                   </p>
                 </MDBNavbarLink>
               </MDBNavbarItem>
             ) : (
               <MDBNavbarItem>
-                <MDBNavbarLink href="/login">
-                  <p className="header-text">Login</p>
+                <MDBNavbarLink>
+                  <p
+                    className="header-text navbar-item"
+                    onClick={() => navigate("/login")}
+                  >
+                    Login
+                  </p>
                 </MDBNavbarLink>
               </MDBNavbarItem>
             )}
