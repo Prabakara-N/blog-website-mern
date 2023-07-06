@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { setUser } from "./redux/features/authSlice";
-import { Header, PrivateRoute } from "./components";
+import { Header, PrivateRoute, ScrollToTop } from "./components";
 import {
   AddEditBlog,
   Dashboard,
@@ -27,6 +27,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
+        <ScrollToTop />
         <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
