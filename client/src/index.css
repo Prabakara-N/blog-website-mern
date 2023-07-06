@@ -60,6 +60,16 @@ body {
   min-height: 40vh;
 }
 
+.text-un {
+  text-decoration: underline;
+  font-weight: 500;
+  padding-left: 5px;
+}
+
+.social {
+  margin: -10px 0;
+}
+
 .eye {
   right: 20px;
   top: 5px;

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBlogs, setCurrentPage } from "../redux/features/blogSlice";
 import { useLocation } from "react-router-dom";
 import { CardBlog, Pagination, Spinner } from "../components";
+import Footer from "../components/Footer";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -29,45 +30,48 @@ const Home = () => {
     return <Spinner />;
   }
   return (
-    <div
-      style={{
-        margin: "2rem auto",
-        padding: "15px",
-        maxWidth: "1200px",
-        alignContent: "center",
-      }}
-    >
-      <MDBRow className="mt-5">
-        {blogs.length === 0 && location.pathname === "/" && (
-          <MDBTypography className="text-center mb-0" tag="h2">
-            No Blogs Found
-          </MDBTypography>
-        )}
+    <>
+      <div
+        style={{
+          margin: "2rem auto",
+          padding: "15px",
+          maxWidth: "1200px",
+          alignContent: "center",
+        }}
+      >
+        <MDBRow className="mt-5">
+          {blogs.length === 0 && location.pathname === "/" && (
+            <MDBTypography className="text-center mb-0" tag="h2">
+              No Blogs Found
+            </MDBTypography>
+          )}
 
-        {blogs.length === 0 && location.pathname !== "/" && (
-          <MDBTypography className="text-center mb-0" tag="h2">
-            We couldn't find any matches for "{searchQuery}"
-          </MDBTypography>
-        )}
+          {blogs.length === 0 && location.pathname !== "/" && (
+            <MDBTypography className="text-center mb-0" tag="h2">
+              We couldn't find any matches for "{searchQuery}"
+            </MDBTypography>
+          )}
 
-        <MDBCol>
-          <MDBContainer>
-            <MDBRow className="row-cols-1 row-cols-md-3 g-2">
-              {blogs &&
-                blogs.map((item) => <CardBlog key={item._id} {...item} />)}
-            </MDBRow>
-          </MDBContainer>
-        </MDBCol>
-      </MDBRow>
-      {blogs.length > 0 && !searchQuery && (
-        <Pagination
-          setCurrentPage={setCurrentPage}
-          numberOfPages={numberOfPages}
-          currentPage={currentPage}
-          dispatch={dispatch}
-        />
-      )}
-    </div>
+          <MDBCol>
+            <MDBContainer>
+              <MDBRow className="row-cols-1 row-cols-md-3 g-2">
+                {blogs &&
+                  blogs.map((item) => <CardBlog key={item._id} {...item} />)}
+              </MDBRow>
+            </MDBContainer>
+          </MDBCol>
+        </MDBRow>
+        {blogs.length > 0 && !searchQuery && (
+          <Pagination
+            setCurrentPage={setCurrentPage}
+            numberOfPages={numberOfPages}
+            currentPage={currentPage}
+            dispatch={dispatch}
+          />
+        )}
+      </div>
+      <Footer />
+    </>
   );
 };
 
