@@ -3,8 +3,7 @@ import { MDBCol, MDBContainer, MDBRow, MDBTypography } from "mdb-react-ui-kit";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlogs, setCurrentPage } from "../redux/features/blogSlice";
 import { useLocation } from "react-router-dom";
-import { CardBlog, Pagination, Spinner } from "../components";
-import Footer from "../components/Footer";
+import { CardBlog, Pagination, Spinner, Footer } from "../components";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -30,7 +29,10 @@ const Home = () => {
     return <Spinner />;
   }
   return (
-    <>
+    <div
+      className="d-flex flex-column justify-content-between align-items-center"
+      style={{ minHeight: "100vh" }}
+    >
       <div
         style={{
           margin: "2rem auto",
@@ -71,7 +73,7 @@ const Home = () => {
         )}
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

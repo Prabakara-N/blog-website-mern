@@ -99,13 +99,8 @@ const Header = () => {
             </form>
 
             <MDBNavbarItem>
-              <MDBNavbarLink>
-                <p
-                  className="header-text navbar-item"
-                  onClick={() => navigate("/")}
-                >
-                  Home
-                </p>
+              <MDBNavbarLink href="/">
+                <p className="header-text navbar-item">Home</p>
               </MDBNavbarLink>
             </MDBNavbarItem>
             {user?.result?._id && (

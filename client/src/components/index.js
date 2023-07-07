@@ -8,3 +8,4 @@ export { default as Pagination } from "./Pagination";
 export { default as RelatedBlogs } from "./RelatedBlogs";
 export { default as ModelDelete } from "./ModelDelete";
 export { default as ScrollToTop } from "./ScrollToTop";
+export { default as Footer } from "./Footer";

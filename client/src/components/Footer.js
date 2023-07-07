@@ -5,7 +5,7 @@ import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 const Footer = () => {
   return (
     <MDBFooter
-      className="py-3 container-fluid d-flex flex-column justify-content-center align-items-center text-white"
+      className="py-3 container-fluid d-flex flex-column justify-content-center align-items-center text-white footer"
       style={{ backgroundColor: "#202c37" }}
     >
       <p className="c-right text-center">

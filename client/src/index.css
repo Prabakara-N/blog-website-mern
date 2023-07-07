@@ -43,6 +43,10 @@ body {
   background-color: var(--clr-white);
 }
 
+.footer {
+  margin-top: -2.75rem;
+}
+
 .scroll-to-top {
   position: fixed;
   bottom: 20px;
