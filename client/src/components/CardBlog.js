@@ -84,8 +84,11 @@ const CardBlog = ({
         />
         <div className="top-left">{name}</div>
         <span className="text-start tag-card">
-          {tags.map((tag) => (
-            <Link to={`/blogs/tag/${tag}`}> #{tag}</Link>
+          {tags.map((tag, index) => (
+            <Link key={index} to={`/blogs/tag/${tag}`}>
+              {" "}
+              #{tag}
+            </Link>
           ))}
           <MDBBtn
             style={{ float: "right", marginRight: "15px" }}
