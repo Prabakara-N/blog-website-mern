@@ -30,7 +30,6 @@ const AddEditBlog = () => {
   useEffect(() => {
     if (id) {
       const singleTour = userBlogs.find((tour) => tour._id === id);
-      console.log(singleTour);
       setBlogData({ ...singleTour });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
