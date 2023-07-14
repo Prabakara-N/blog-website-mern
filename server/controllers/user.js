@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 
 import UserModal from "../models/user.js";
 
@@ -53,5 +54,38 @@ export const signup = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
     console.log(error);
+  }
+};
+
+export const addUserInfo = async (req, res) => {
+  const { id } = req.params;
+  const { name, email, bio, imageFile } = req.body;
+  try {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({ message: `No blog exist with id: ${id}` });
+    }
+
+    const updateUserInfo = {
+      name,
+      email,
+      bio,
+      imageFile,
+      _id: id,
+    };
+
+    await UserModal.findByIdAndUpdate(id, updateUserInfo, { new: true });
+    res.status(201).json(updateUserInfo);
+  } catch (error) {
+    res.status(404).json({ message: "Something went wrong" });
+  }
+};
+
+export const getUserInfo = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await UserModal.findById(id);
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };
