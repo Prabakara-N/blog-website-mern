@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import noUser from "../assets/images/user.png";
 import {
   MDBNavbar,
   MDBContainer,
@@ -13,13 +14,13 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../redux/features/authSlice";
 import { searchBlogs } from "../redux/features/blogSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
 
 const Header = () => {
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState("");
-  const { user } = useSelector((state) => ({ ...state.auth }));
+  const { user, userInfo } = useSelector((state) => ({ ...state.auth }));
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = user?.token;
@@ -68,15 +69,26 @@ const Header = () => {
         <MDBCollapse show={show} navbar>
           <MDBNavbarNav right fullWidth={false} className="mb-2 mb-lg-0">
             {user?.result?._id && (
-              <h5
-                style={{
-                  marginRight: "30px",
-                  marginTop: "27px",
-                  color: "#48a9a6",
-                }}
-              >
-                {user?.result?.name}
-              </h5>
+              <div className="d-flex align-items-center justify-content-center gap-2">
+                <Link to={`/userinfo/${user?.result?._id}`}>
+                  <img
+                    src={userInfo.imageFile || noUser}
+                    alt="user-img"
+                    className="header-user-pic"
+                  />
+                </Link>
+                <h5
+                  style={{
+                    marginRight: "30px",
+                    marginTop: "5px",
+                    color: "#48a9a6",
+                  }}
+                >
+                  <Link to={`/userinfo/${user?.result?._id}`}>
+                    {userInfo?.name || user?.result?.name}
+                  </Link>
+                </h5>
+              </div>
             )}
 
             <form

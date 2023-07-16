@@ -19,9 +19,14 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
+// users
 export const signIn = (formData) => API.post("/users/signin", formData);
 export const signUp = (formData) => API.post("/users/signup", formData);
+export const getUserInfo = (id) => API.get(`/users/userinfo/${id}`);
+export const addUserInfo = (updatedData, id) =>
+  API.patch(`/users/userinfo/${id}`, updatedData);
 
+// blogs
 export const createBlog = (blogData) => API.post("/blog", blogData);
 export const getBlogs = (page) => API.get(`/blog?page=${page}`);
 export const getBlog = (id) => API.get(`/blog/${id}`);

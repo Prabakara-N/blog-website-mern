@@ -7,6 +7,7 @@ import { setUser } from "./redux/features/authSlice";
 import { Header, PrivateRoute, ScrollToTop } from "./components";
 import {
   AddEditBlog,
+  AddEditUserInfo,
   Dashboard,
   Home,
   Login,
@@ -14,6 +15,7 @@ import {
   Register,
   SingleBlog,
   TagBlogs,
+  UserInfo,
 } from "./pages";
 
 function App() {
@@ -57,6 +59,23 @@ function App() {
             element={
               <PrivateRoute>
                 <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/userinfo/:id"
+            element={
+              <PrivateRoute>
+                <UserInfo />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/addeditinfo/:id"
+            element={
+              <PrivateRoute>
+                <AddEditUserInfo />
               </PrivateRoute>
             }
           />

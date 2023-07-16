@@ -202,6 +202,54 @@ h4:after {
   cursor: pointer;
 }
 
+/* userinfo */
+.user-card {
+  width: 95%;
+  margin: 2rem auto;
+  margin-bottom: -5rem;
+  padding: 1.15rem 1.75rem;
+  box-shadow: var(--box-shadow);
+  background-color: #202c37;
+}
+
+.user-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.user-main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-details {
+  box-shadow: var(--box-shadow);
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+.user-details.name {
+  box-shadow: none;
+}
+
+.user-details.bio {
+  width: 100%;
+  height: 7rem;
+}
+
+.imgFile {
+  margin-top: -6rem;
+  margin-bottom: 1.25rem;
+}
+
+.header-user-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 @media screen and (min-width: 900px) {
   .error {
     margin-top: 3rem;
@@ -241,5 +289,15 @@ h4:after {
 
   .search-input {
     margin-left: -10px;
+  }
+
+  .user-card {
+    width: 450px;
+    margin: 2rem auto;
+  }
+
+  .user-pic {
+    width: 140px;
+    height: 140px;
   }
 }

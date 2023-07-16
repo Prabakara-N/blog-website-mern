@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBlogs, setCurrentPage } from "../redux/features/blogSlice";
 import { useLocation } from "react-router-dom";
 import { CardBlog, Pagination, Spinner, Footer } from "../components";
+import { getUserInfo } from "../redux/features/authSlice";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -24,6 +25,15 @@ const Home = () => {
     dispatch(getBlogs(currentPage));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
+
+  const { userInfo } = useSelector((state) => ({ ...state.auth }));
+  console.log(userInfo);
+
+  useEffect(() => {
+    if (userInfo._id) {
+      dispatch(getUserInfo(userInfo._id));
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userInfo._id]);
 
   if (loading) {
     return <Spinner />;

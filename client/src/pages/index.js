@@ -5,4 +5,6 @@ export { default as AddEditBlog } from "./AddEditBlog";
 export { default as SingleBlog } from "./SingleBlog";
 export { default as TagBlogs } from "./TagBlogs";
 export { default as Dashboard } from "./Dashboard";
+export { default as UserInfo } from "./UserInfo";
+export { default as AddEditUserInfo } from "./AddEditUserInfo";
 export { default as NotFound } from "./NotFound";
