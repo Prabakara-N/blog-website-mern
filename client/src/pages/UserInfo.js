@@ -4,10 +4,9 @@ import { MDBCard, MDBCardBody, MDBBtn, MDBCardImage } from "mdb-react-ui-kit";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getUserInfo } from "../redux/features/authSlice";
-import { Spinner } from "../components";
 
 const UserInfo = () => {
-  const { user, userInfo, loading } = useSelector((state) => ({
+  const { user, userInfo } = useSelector((state) => ({
     ...state.auth,
   }));
 
@@ -19,10 +18,6 @@ const UserInfo = () => {
       dispatch(getUserInfo(id));
     } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-
-  if (loading) {
-    <Spinner />;
-  }
 
   return (
     <div className="user-main mt-5">

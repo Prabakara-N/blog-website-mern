@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { MDBCard, MDBCardBody, MDBBtn } from "mdb-react-ui-kit";
+import { MDBCard, MDBCardBody, MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
 import FileBase from "react-file-base64";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { addUserInfo } from "../redux/features/authSlice";
-import { Spinner } from "../components";
 
 const AddEditUserInfo = () => {
   const { user, userInfo, loading } = useSelector((state) => ({
     ...state.auth,
   }));
   const initialStae = {
-    name: user.result.name,
-    bio: user.result.bio,
-    imageFile: user.result.imageFile,
+    name: "",
+    bio: "",
+    imageFile: null,
   };
   const [userData, setUserData] = useState(initialStae);
   const { name, bio, imageFile } = userData;
@@ -44,10 +43,6 @@ const AddEditUserInfo = () => {
       toast.error("Please fill the required fields");
     }
   };
-
-  if (loading) {
-    <Spinner />;
-  }
 
   return (
     <div className="user-main mt-5">
@@ -93,7 +88,7 @@ const AddEditUserInfo = () => {
             <input
               placeholder="Enter Title"
               type="text"
-              value={name}
+              value={name || user?.result?.name}
               name="title"
               id="name"
               onChange={(e) =>
@@ -108,7 +103,7 @@ const AddEditUserInfo = () => {
             <textarea
               placeholder="Bio"
               type="text"
-              value={bio}
+              value={bio || user?.result?.bio}
               name="bio"
               id="bio"
               onChange={(e) =>
@@ -119,7 +114,17 @@ const AddEditUserInfo = () => {
               cols={5}
               validation="Please provide description"
             />
-            <MDBBtn type="submit">Save</MDBBtn>
+            <MDBBtn type="submit">
+              {loading && (
+                <MDBSpinner
+                  size="sm"
+                  role="status"
+                  tag="span"
+                  className="me-2"
+                />
+              )}
+              {loading ? "Saving ..." : "Save"}
+            </MDBBtn>
           </form>
         </MDBCardBody>
       </MDBCard>

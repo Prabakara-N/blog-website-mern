@@ -72,7 +72,9 @@ const Header = () => {
               <div className="d-flex align-items-center justify-content-center gap-2">
                 <Link to={`/userinfo/${user?.result?._id}`}>
                   <img
-                    src={user?.result?.imageFile || noUser}
+                    src={
+                      user?.result?.imageFile || userInfo?.imageFile || noUser
+                    }
                     alt="user-img"
                     className="header-user-pic"
                   />
