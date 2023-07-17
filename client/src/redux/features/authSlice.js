@@ -43,10 +43,11 @@ export const getUserInfo = createAsyncThunk(
 
 export const addUserInfo = createAsyncThunk(
   "auth/addUserInfo",
-  async ({ id, updatedData, navigate }, { rejectWithValue }) => {
+  async ({ id, updatedData, navigate, toast }, { rejectWithValue }) => {
     try {
       const response = await api.addUserInfo(updatedData, id);
       navigate(`/userinfo/${id}`);
+      toast.success("Profile Updated");
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -66,14 +67,15 @@ const authSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
-    setLogout: (state, action) => {
+    setLogout: (state) => {
       localStorage.clear();
+      state.userInfo = {};
       state.user = null;
     },
   },
   extraReducers: {
     // login
-    [login.pending]: (state, action) => {
+    [login.pending]: (state) => {
       state.loading = true;
     },
     [login.fulfilled]: (state, action) => {
@@ -87,7 +89,7 @@ const authSlice = createSlice({
     },
 
     // register
-    [register.pending]: (state, action) => {
+    [register.pending]: (state) => {
       state.loading = true;
     },
     [register.fulfilled]: (state, action) => {
@@ -122,7 +124,7 @@ const authSlice = createSlice({
       const { id } = action.meta.arg;
       if (id) {
         state.userInfo =
-          state.userInfo.result._id === id ? action.payload : state.userInfo;
+          state.userInfo._id === id ? action.payload : state.userInfo;
       }
     },
     [addUserInfo.rejected]: (state, action) => {

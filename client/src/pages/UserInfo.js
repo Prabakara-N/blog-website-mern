@@ -4,11 +4,12 @@ import { MDBCard, MDBCardBody, MDBBtn, MDBCardImage } from "mdb-react-ui-kit";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getUserInfo } from "../redux/features/authSlice";
+import { Spinner } from "../components";
 
 const UserInfo = () => {
-  const { user, userInfo } = useSelector((state) => ({ ...state.auth }));
-  console.log(user);
-  console.log(userInfo);
+  const { user, userInfo, loading } = useSelector((state) => ({
+    ...state.auth,
+  }));
 
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -19,21 +20,39 @@ const UserInfo = () => {
     } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
+  if (loading) {
+    <Spinner />;
+  }
+
   return (
     <div className="user-main mt-5">
-      <MDBCard className="user-card">
+      <MDBCard
+        className="user-card"
+        style={{
+          marginTop: "6rem",
+          color: "#10161c",
+          backgroundColor: "#e9eaeb",
+        }}
+      >
         <MDBCardBody>
-          <div className="text-center" style={{ marginTop: "-7.5rem" }}>
+          <div className="text-center" style={{ marginTop: "-5.5rem" }}>
             <MDBCardImage
               src={userInfo?.imageFile || noUser}
               alt="user-pic"
               className="text-center user-pic"
             />
           </div>
-          <div className="text-center d-flex flex-column align-items-center justify-content-center gap-2 mt-3">
-            <h2 className="user-details name">{userInfo?.name}</h2>
+          <div className="text-center d-flex flex-column align-items-center justify-content-center gap-1 mt-3">
+            <b>Name :</b>
+            <h3 className="user-details name">
+              {userInfo?.name || user?.result?.name}
+            </h3>
+            <b>Email :</b>
             <p className="user-details">{user.result.email}</p>
-            <p className="user-details bio">{userInfo?.bio || "Add Bio"}</p>
+            <b>Bio :</b>
+            <p className="user-details bio">
+              {userInfo?.bio || user?.result?.bio}
+            </p>
           </div>
           <div className="d-flex  align-items-center justify-content-between mt-1">
             <Link to={`/addeditinfo/${user.result._id}`}>

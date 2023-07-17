@@ -5,9 +5,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { addUserInfo } from "../redux/features/authSlice";
+import { Spinner } from "../components";
 
 const AddEditUserInfo = () => {
-  const { user, userInfo } = useSelector((state) => ({ ...state.auth }));
+  const { user, userInfo, loading } = useSelector((state) => ({
+    ...state.auth,
+  }));
   const initialStae = {
     name: user.result.name,
     bio: user.result.bio,
@@ -32,19 +35,29 @@ const AddEditUserInfo = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name && bio) {
+    if (name.trim() && bio.trim()) {
       if (id) {
         const updatedData = { ...userData };
-        dispatch(addUserInfo({ updatedData, id, navigate }));
+        dispatch(addUserInfo({ updatedData, id, navigate, toast }));
       }
     } else {
       toast.error("Please fill the required fields");
     }
   };
 
+  if (loading) {
+    <Spinner />;
+  }
+
   return (
     <div className="user-main mt-5">
-      <MDBCard className="user-card">
+      <MDBCard
+        className="user-card"
+        style={{
+          color: "#e9eaeb",
+          backgroundColor: "#e9eaeb",
+        }}
+      >
         <MDBCardBody>
           <div className="text-center">
             {imageFile ? (
@@ -74,22 +87,30 @@ const AddEditUserInfo = () => {
             onSubmit={handleSubmit}
             className="d-flex flex-column gap-2 align-items-center justify-content-center"
           >
+            <label htmlFor="name" style={{ color: "black" }}>
+              Name :
+            </label>
             <input
               placeholder="Enter Title"
               type="text"
               value={name}
               name="title"
+              id="name"
               onChange={(e) =>
                 setUserData({ ...userData, name: e.target.value })
               }
               className="form-control"
               validation="Please provide title"
             />
+            <label htmlFor="bio" style={{ color: "black" }}>
+              Bio :
+            </label>
             <textarea
               placeholder="Bio"
               type="text"
               value={bio}
               name="bio"
+              id="bio"
               onChange={(e) =>
                 setUserData({ ...userData, bio: e.target.value })
               }
