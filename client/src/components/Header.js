@@ -80,6 +80,7 @@ const Header = () => {
                   />
                 </Link>
                 <h5
+                  className="text-capitalize"
                   style={{
                     marginRight: "30px",
                     marginTop: "5px",

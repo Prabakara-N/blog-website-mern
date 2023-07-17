@@ -39,7 +39,7 @@ const UserInfo = () => {
           </div>
           <div className="text-center d-flex flex-column align-items-center justify-content-center gap-1 mt-3">
             <b>Name :</b>
-            <h3 className="user-details name">
+            <h3 className="user-details name text-capitalize">
               {userInfo?.name || user?.result?.name}
             </h3>
             <b>Email :</b>
