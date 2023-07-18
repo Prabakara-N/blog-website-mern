@@ -1,21 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { MDBCard, MDBCardBody, MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBBtn,
+  MDBSpinner,
+  MDBTooltip,
+} from "mdb-react-ui-kit";
 import FileBase from "react-file-base64";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { addUserInfo } from "../redux/features/authSlice";
+import { addUserInfo, setDelete } from "../redux/features/authSlice";
+import { MdDelete } from "react-icons/md";
+import noUser from "../assets/images/user.png";
 
 const AddEditUserInfo = () => {
   const { user, userInfo, loading } = useSelector((state) => ({
     ...state.auth,
   }));
-  const initialStae = {
-    name: "",
+
+  const initialState = {
+    name: user?.result?.name,
     bio: "",
     imageFile: null,
   };
-  const [userData, setUserData] = useState(initialStae);
+  const [userData, setUserData] = useState(initialState);
   const { name, bio, imageFile } = userData;
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -25,7 +34,7 @@ const AddEditUserInfo = () => {
 
   useEffect(() => {
     if (id) {
-      if (userInfo._id === id) {
+      if (user?.result?._id === id) {
         setUserData({ ...userInfo });
       }
     }
@@ -44,6 +53,11 @@ const AddEditUserInfo = () => {
     }
   };
 
+  const handleDelete = () => {
+    dispatch(setDelete());
+    setUserData({ ...userData, imageFile: null });
+  };
+
   return (
     <div className="user-main mt-5">
       <MDBCard
@@ -55,15 +69,29 @@ const AddEditUserInfo = () => {
       >
         <MDBCardBody>
           <div className="text-center">
-            {imageFile ? (
-              <div className="user-pic mx-auto imgFile">
-                <img src={imageFile} alt="user-profile" className="user-pic" />
+            {user?.result?.imageFile || userInfo?.imageFile || imageFile ? (
+              <div className="user-pic mx-auto imgFile position-relative">
+                <img
+                  src={
+                    user?.result?.imageFile || userInfo?.imageFile || imageFile
+                  }
+                  alt="user-profile"
+                  className="user-pic"
+                />
+                <MDBTooltip title="Delete" placement="right" tag="a">
+                  <MdDelete
+                    onClick={handleDelete}
+                    className="delete-icon position-absolute"
+                  />
+                </MDBTooltip>
               </div>
             ) : (
               <>
                 <label htmlFor="userpic">
                   <div className="d-flex align-items-center justify-content-center mb-3">
-                    <div className="bg-dark user-pic"></div>
+                    <div className="bg-dark user-pic">
+                      <img src={noUser} alt="noUser" />
+                    </div>
                   </div>
                   <div className="mb-3">
                     <FileBase
@@ -103,7 +131,7 @@ const AddEditUserInfo = () => {
             <textarea
               placeholder="Bio"
               type="text"
-              value={bio || user?.result?.bio}
+              value={bio}
               name="bio"
               id="bio"
               onChange={(e) =>

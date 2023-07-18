@@ -250,6 +250,19 @@ h4:after {
   border-radius: 50%;
 }
 
+.delete-icon {
+  background-color: rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 3px;
+  color: #ff1919;
+  bottom: 5px;
+  right: 2px;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 900px) {
   .error {
     margin-top: 3rem;

@@ -72,6 +72,10 @@ const authSlice = createSlice({
       state.userInfo = {};
       state.user = null;
     },
+    setDelete: (state) => {
+      state.userInfo.imageFile = null;
+      state.user.result.imageFile = null;
+    },
   },
   extraReducers: {
     // login
@@ -134,6 +138,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { setUser, setLogout } = authSlice.actions;
+export const { setUser, setLogout, setDelete } = authSlice.actions;
 
 export default authSlice.reducer;

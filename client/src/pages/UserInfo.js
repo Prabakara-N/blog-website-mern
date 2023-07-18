@@ -32,7 +32,7 @@ const UserInfo = () => {
         <MDBCardBody>
           <div className="text-center" style={{ marginTop: "-5.5rem" }}>
             <MDBCardImage
-              src={userInfo?.imageFile || noUser}
+              src={user?.result?.imageFile || userInfo?.imageFile || noUser}
               alt="user-pic"
               className="text-center user-pic"
             />
