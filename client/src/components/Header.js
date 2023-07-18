@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import noUser from "../assets/images/user.png";
 import {
   MDBNavbar,
@@ -12,7 +12,7 @@ import {
   MDBNavbarBrand,
 } from "mdb-react-ui-kit";
 import { useSelector, useDispatch } from "react-redux";
-import { setLogout } from "../redux/features/authSlice";
+import { getUserInfo, setLogout } from "../redux/features/authSlice";
 import { searchBlogs } from "../redux/features/blogSlice";
 import { Link, useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
@@ -31,6 +31,12 @@ const Header = () => {
       dispatch(setLogout());
     }
   }
+
+  useEffect(() => {
+    if (user?.result?._id) {
+      dispatch(getUserInfo(user?.result?._id));
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.result?._id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
