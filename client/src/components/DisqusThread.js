@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
-// const SHORTNAME = "blog-p0hkhcznv8";
-// const URL = "https://blog-mern-eyva.onrender.com";
-
 const renderDisqus = () => {
   if (window.DISQUS === undefined) {
     var script = document.createElement("script");
